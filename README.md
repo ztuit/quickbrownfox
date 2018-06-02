@@ -1,2 +1,2 @@
 # elementary
-An implementation of Sherlock Holmes Consulting Detective bored game
+An implementation of Sherlock Holmes Consulting Detective board game.
