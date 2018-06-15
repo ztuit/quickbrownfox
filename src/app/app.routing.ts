@@ -1,12 +1,15 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
+import { ActionComponent }  from './action.component';
+import { DashboardComponent }  from './dashboard.component';
 
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'action',     component: ActionComponent },
+  { path: 'dashboard',     component: DashboardComponent }
 ];
 
 @NgModule({

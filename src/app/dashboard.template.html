@@ -1,0 +1,13 @@
+<h3>Entities</h3>
+<div class="grid grid-pad">
+  <div *ngFor="let entity of entities" [routerLink]="['/detail', entity.id]" class="col-1-4">
+    <div class="module entity">
+      <h4>{{entity.name}}</h4>
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<entity-search></entity-search>
