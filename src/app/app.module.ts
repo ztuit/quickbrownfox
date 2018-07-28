@@ -11,8 +11,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }  from './app.component';
 import { ActionComponent } from './action.component';
-import { DashboardComponent } from './dashboard.component';
-import { EntitySearchComponent } from './entity-search.component';
+import { LeaderBoardComponent } from './leaderboard.component';
+import { LeaderBoardSearchComponent } from './leaderboard-search.component';
 
 import { AppRoutingModule }     from './app.routing';
 
@@ -20,7 +20,7 @@ import { AppRoutingModule }     from './app.routing';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { rootReducer, IAppState, INITIAL_STATE } from './basic.store';
 import { BasicActions } from './basic.actions';
-import { EntityService }         from './entity.service';
+import { LeaderBoardService }         from './leaderboard.service';
 
 
 @NgModule({
@@ -34,9 +34,9 @@ import { EntityService }         from './entity.service';
           BrowserModule,
           NgReduxModule
 			],
-  declarations: [ AppComponent, ActionComponent, DashboardComponent, EntitySearchComponent],
+  declarations: [ AppComponent, ActionComponent, LeaderBoardComponent, LeaderBoardSearchComponent],
   bootstrap:    [ AppComponent ],
-  providers:	[BasicActions,EntityService]
+  providers:	[BasicActions,LeaderBoardService]
 })
 
 export class AppModule {

@@ -17,7 +17,7 @@
           {
             loader: 'awesome-typescript-loader',
             options: { configFileName: 'tsconfig.json' }
-          }, 
+          },
           'angular2-template-loader'
           ],
          exclude: /node_modules/
@@ -58,7 +58,17 @@
           test: /\.html$/,
           use: 'raw-loader',
           exclude: ['src/index.html']
-        }
+        },
+        {
+            test: /\.less$/,
+            use: [{
+                loader: "to-string-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS
+            }, {
+                loader: "less-loader" // compiles Less to CSS
+            }]
+          }
     ]
   },
   resolve: {

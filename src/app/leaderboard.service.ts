@@ -7,40 +7,40 @@ import 'rxjs/add/operator/toPromise';
 
 
 
-import { Entity } from './entity';
-import { ENTITIES } from './mock-entities';
+import { PlayerScore } from './PlayerScore';
+
 
 
 
 
 
 @Injectable()
-export class EntityService {
+export class LeaderBoardService {
 
-	private entitiesUrl = 'api/entities';  // URL to web api
+	private entitiesUrl = 'api/leaders';  // URL to web api
 
 	constructor(private http: Http) { }
 
-	getEntities(): Promise<Entity[]> {
+	getEntities(): Promise<PlayerScore[]> {
 
     return this.http.get(this.entitiesUrl)
              .toPromise()
-             .then(response => { return response.json().data as Entity[];})
+             .then(response => { return response.json().data as PlayerScore[];})
              .catch(this.handleError);
   	}
 
-  	getEntity(id: number): Promise<Entity> {
+  	getEntity(id: number): Promise<PlayerScore> {
   			const url = `${this.entitiesUrl}/${id}`;
 		  return this.http.get(url)
 		    .toPromise()
-		    .then(response => response.json().data as Entity)
+		    .then(response => response.json().data as PlayerScore)
 		    .catch(this.handleError);
 	}
 
 	private headers = new Headers({'Content-Type': 'application/json'});
 
-	update(entity: Entity): Promise<Entity> {
-	  const url = `${this.entitiesUrl}/${entity.id}`;
+	update(entity: PlayerScore): Promise<PlayerScore> {
+	  const url = `${this.entitiesUrl}/${entity.name}`;
 	  return this.http
 	    .put(url, JSON.stringify(entity), {headers: this.headers})
 	    .toPromise()
@@ -48,11 +48,11 @@ export class EntityService {
 	    .catch(this.handleError);
 	}
 
-	create(name: string): Promise<Entity> {
+	create(name: string): Promise<PlayerScore> {
 	  return this.http
 	    .post(this.entitiesUrl, JSON.stringify({name: name}), {headers: this.headers})
 	    .toPromise()
-	    .then(res => res.json().data as Entity)
+	    .then(res => res.json().data as PlayerScore)
 	    .catch(this.handleError);
 	}
 

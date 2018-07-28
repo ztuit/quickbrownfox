@@ -12,21 +12,21 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { EntitySearchService } from './entity-search.service';
-import { Entity } from './entity';
+import { LeaderBoardSearchService } from './leaderboard-search.service';
+import { PlayerScore } from './PlayerScore';
 
 @Component({
-  selector: 'entity-search',
-  templateUrl: './entity-search.component.html',
-  styleUrls: [ './entity-search.component.css' ],
-  providers: [EntitySearchService]
+  selector: 'leaderboard-search',
+  templateUrl: './leaderboard-search.component.html',
+  styleUrls: [ './leaderboard-search.component.css' ],
+  providers: [LeaderBoardSearchService]
 })
-export class EntitySearchComponent implements OnInit {
-  entities: Observable<Entity[]>;
+export class LeaderBoardSearchComponent implements OnInit {
+  entities: Observable<PlayerScore[]>;
   private searchTerms = new Subject<string>();
 
   constructor(
-    private entitySearchService: EntitySearchService,
+    private leaderBoardSearchService: LeaderBoardSearchService,
     private router: Router) {}
 
   // Push a search term into the observable stream.
@@ -40,18 +40,18 @@ export class EntitySearchComponent implements OnInit {
       .distinctUntilChanged()   // ignore if next search term is same as previous
       .switchMap(term => term   // switch to new observable each time the term changes
         // return the http search observable
-        ? this.entitySearchService.search(term)
+        ? this.leaderBoardSearchService.search(term)
         // or the observable of empty heroes if there was no search term
-        : Observable.of<Entity[]>([]))
+        : Observable.of<PlayerScore[]>([]))
       .catch(error => {
         // TODO: add real error handling
         console.log(error);
-        return Observable.of<Entity[]>([]);
+        return Observable.of<PlayerScore[]>([]);
       });
   }
 
-  gotoDetail(entity: Entity): void {
-    let link = ['/detail', entity.id];
+  gotoDetail(entity: PlayerScore): void {
+    let link = ['/detail', entity.name];
     this.router.navigate(link);
   }
 }
