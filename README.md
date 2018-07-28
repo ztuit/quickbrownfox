@@ -1,6 +1,6 @@
 ## Synopsis
 
-A webpack and angular 4 seed project
+A typing game built with angular4 and webpack
 
 ## Code Example
 
