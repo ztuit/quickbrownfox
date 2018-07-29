@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 	{
 		selector: 'my-app',
 		templateUrl: 'app.component.html',
-		styleUrls: ['app.synthwave.less']
+		styleUrls: ['app.component.css', '../style.less']
 	})
 
 export class AppComponent{

@@ -8,7 +8,8 @@
     polyfills: './src/polyfills.ts',
      app: './src/main.ts',
      css: './src/style.cssx',
-     scss: './src/style.scss'
+     scss: './src/style.scss',
+     less: './src/style.less'
    },
    module: {
      rules:[
@@ -63,10 +64,22 @@
         {
             test: /\.less$/,
             use: [{
-                loader: "to-string-loader" // creates style nodes from JS strings
+                loader: "style-loader" // creates style nodes from JS strings
             }, {
                 loader: "css-loader" // translates CSS into CommonJS
-            }, {
+            },
+            {
+              loader: 'postcss-loader', // Run post css actions
+              options: {
+                plugins: function () { // post css plugins, can be exported to postcss.config.js
+                  return [
+                    require('precss'),
+                    require('autoprefixer')
+                  ];
+                }
+              }
+            },
+            {
                 loader: "less-loader" // compiles Less to CSS
             }]
           },
