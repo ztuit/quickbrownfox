@@ -7,6 +7,7 @@ import { LeaderBoardComponent }  from './leaderboard.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/leaderboard', pathMatch: 'full' },
   { path: 'play',     component: ActionComponent },
   { path: 'leaderboard',     component: LeaderBoardComponent }
 ];

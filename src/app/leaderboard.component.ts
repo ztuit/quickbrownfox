@@ -8,7 +8,7 @@ import { LeaderBoardService } from './leaderboard.service';
 @Component({
   selector: 'leader-board',
   templateUrl: './leaderboard.template.html',
-  styleUrls: ['./leaderboard.component.css']
+  styleUrls: ['./leaderboard.component.css', 'app.synthwave.less']
 })
 export class LeaderBoardComponent implements OnInit {
 

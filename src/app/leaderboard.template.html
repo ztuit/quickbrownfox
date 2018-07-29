@@ -1,13 +1,31 @@
-<h3>Leader Board</h3>
-<div class="grid grid-pad">
-  <div *ngFor="let entity of entities" [routerLink]="['/detail', entity.name]" class="col-1-1">
-    <div class="module entity">
-      <h4>{{entity.name}}</h4>
-    </div>
-  </div>
+<div class="content-cont">
+	<div class="text-body">
+		<h1>
+			<span>Quick Brown Fox...</span><h3>Leaderboard</h3>
+		</h1>
+</div>
 </div>
 <br/>
 <br/>
 <br/>
 <br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entity of entities">
+      <td>{{entity.name}}</td>
+      <td>{{entity.score}}</td>
+    </tr>
+  </tbody>
+</table>
 <!--leaderboard-search></leaderboard-search-->
