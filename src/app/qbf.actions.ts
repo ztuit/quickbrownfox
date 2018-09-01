@@ -17,11 +17,11 @@ export class QbfActions {
   }
 
   actionCharacterAdded(value : String): ActionWithPayload {
-    
+
     return { type: QbfActions.ACTION_CHARACTER_ADDED, payload: value };
   }
 
-  actionWordAdded(): Action {
-    return { type: QbfActions.ACTION_WORD_ADDED };
+  actionWordAdded(w : String): ActionWithPayload {
+    return { type: QbfActions.ACTION_WORD_ADDED, payload: w };
   }
 }

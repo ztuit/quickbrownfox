@@ -6,6 +6,8 @@
   buffer: {{ buffer$ | async }}
 <br/>
   <button (click)="actionEventTick()">Send Tick Event</button>
-  <button (click)="sendAddWord()">Send Add Word Event</button>
-  <input  (keyup)="sendLetterTypedEvent($event)"/>
+<br/>
+  <input placeholder="add word to set"  [(ngModel)]="addword" (keyup)="sendAddWord($event)"/>
+<br/>
+  <input  (keyup)="sendLetterTypedEvent($event)" placeholder="write to buffer"/>
 </div>

@@ -20,7 +20,7 @@ export class ActionComponent  {
   readonly score$: Observable<number>;
   words$: Observable<Word[]>;
   buffer$: Observable<string>;
-
+  addword = '';
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
@@ -36,8 +36,11 @@ export class ActionComponent  {
     this.ngRedux.dispatch(this.actions.actionTimerTick());
   }
 
-  sendAddWord() {
-    this.ngRedux.dispatch(this.actions.actionTimerTick());
+  sendAddWord(e : any) {
+    if(e.keyCode===13){
+      this.ngRedux.dispatch(this.actions.actionWordAdded(e.target.value));
+      this.addword='';
+    }
   }
 
   sendLetterTypedEvent(e : any) {

@@ -23,8 +23,12 @@ export function rootReducer(lastState: IAppState, action: Action): IAppState {
     case QbfActions.ACTION_TIMER_TICK: return lastState;
     case QbfActions.ACTION_CHARACTER_ADDED:
       var actionWP = action as ActionWithPayload;
-    
       return { currentBuffer: ''+actionWP.payload, words:lastState.words, score: lastState.score };
+    case QbfActions.ACTION_WORD_ADDED:
+      var actionWP = action as ActionWithPayload;
+      var wordSet = lastState.words.slice(0)
+      wordSet.push({label:''+actionWP.payload, value:1, speed:1});
+      return {currentBuffer:lastState.currentBuffer, words:wordSet,score: lastState.score}
 
 
 }
