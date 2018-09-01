@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 	{
 		selector: 'my-app',
 		templateUrl: 'app.component.html',
-		styleUrls: ['app.component.css', '../style.less']
+		styleUrls: ['../style.less']
 	})
 
 export class AppComponent{

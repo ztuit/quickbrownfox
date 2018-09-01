@@ -1,5 +1,11 @@
 <div>
-  value: {{ count$ | async }} 
-  <button (click)="actionOne()">+</button>
-  <button (click)="actionTwo()">-</button>
+  score: {{ score$ | async }}
+<br/>
+  words: {{ words$ | async }}
+<br/>
+  buffer: {{ buffer$ | async }}
+<br/>
+  <button (click)="actionEventTick()">Send Tick Event</button>
+  <button (click)="sendAddWord()">Send Add Word Event</button>
+  <input  (keyup)="sendLetterTypedEvent($event)"/>
 </div>

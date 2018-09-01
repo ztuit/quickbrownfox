@@ -19,7 +19,7 @@ import { AppRoutingModule }     from './app.routing';
 
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { rootReducer, IAppState, INITIAL_STATE } from './basic.store';
-import { BasicActions } from './basic.actions';
+import { QbfActions } from './qbf.actions';
 import { LeaderBoardService }         from './leaderboard.service';
 
 
@@ -36,7 +36,7 @@ import { LeaderBoardService }         from './leaderboard.service';
 			],
   declarations: [ AppComponent, ActionComponent, LeaderBoardComponent, LeaderBoardSearchComponent],
   bootstrap:    [ AppComponent ],
-  providers:	[BasicActions,LeaderBoardService]
+  providers:	[QbfActions,LeaderBoardService]
 })
 
 export class AppModule {

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 import { NgRedux } from '@angular-redux/store';
-import { BasicActions } from './basic.actions';
+import { QbfActions } from './qbf.actions';
 import {IAppState} from "./basic.store";
+import {Word} from "./basic.store";
 
 
 
@@ -16,22 +17,31 @@ import { Observable } from 'rxjs/Observable';
 
 export class ActionComponent  {
   title = 'app works!';
-  readonly count$: Observable<number>;
+  readonly score$: Observable<number>;
+  words$: Observable<Word[]>;
+  buffer$: Observable<string>;
 
 
   constructor(
-    private ngRedux: NgRedux<IAppState>, 
-    private actions: BasicActions) {
-  		this.count$ = ngRedux.select<number>('value');
+    private ngRedux: NgRedux<IAppState>,
+    private actions: QbfActions) {
+  		this.score$ = ngRedux.select<number>('score');
+      this.words$ = ngRedux.select<Word[]>('words');
+      this.buffer$ = ngRedux.select<string>('currentBuffer');
     }
 
 
 
-  actionOne() {
-    this.ngRedux.dispatch(this.actions.actionOne());
+  actionEventTick() {
+    this.ngRedux.dispatch(this.actions.actionTimerTick());
   }
 
-  actionTwo() {
-    this.ngRedux.dispatch(this.actions.actionTwo());
+  sendAddWord() {
+    this.ngRedux.dispatch(this.actions.actionTimerTick());
+  }
+
+  sendLetterTypedEvent(e : any) {
+
+    this.ngRedux.dispatch(this.actions.actionCharacterAdded(e.target.value));
   }
 }
