@@ -1,9 +1,13 @@
 <div>
+<div style="color:white">
   score: {{ score$ | async }}
-<br/>
-  words: {{ words$ | async }}
-<br/>
-  buffer: {{ buffer$ | async }}
+  <br/>
+  <ul>
+    <li *ngFor="let item of words$ | async">{{item.label}}</li>
+  </ul>
+  <br/>
+    buffer: {{ buffer$ | async }}
+</div>
 <br/>
   <button (click)="actionEventTick()">Send Tick Event</button>
 <br/>
